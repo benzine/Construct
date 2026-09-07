@@ -1,7 +1,8 @@
 import { useMemo, useRef, useState } from "react";
-import { PROJECTS, type Project } from "../data";
+import { PROJECTS as DEFAULT_PROJECTS, type Project } from "../data";
 import { useTilt } from "../hooks";
 import { IconArrowUR, Reveal, SectionHead } from "../ui";
+import { useBO } from "../bo";
 
 const TYPES = ["All", "High-Rise", "Infrastructure", "Industrial", "Residential", "Commercial", "Civic"] as const;
 
@@ -124,8 +125,23 @@ function ProjectCard({ p, delay, featured = false }: { p: Project; delay: number
 }
 
 export default function Projects() {
+  const bo = useBO();
   const [filter, setFilter] = useState<(typeof TYPES)[number]>("All");
-  const shown = useMemo(() => (filter === "All" ? PROJECTS : PROJECTS.filter((p) => p.type === filter)), [filter]);
+  
+  // Merge backoffice projects with defaults
+  const projectsData = useMemo(() => {
+    const boProjects = bo.projects;
+    return DEFAULT_PROJECTS.map((p) => {
+      const boEntry = boProjects[p.id];
+      return {
+        ...p,
+        name: boEntry?.name || p.name,
+        scope: boEntry?.scope || p.scope,
+      };
+    });
+  }, [bo.projects]);
+  
+  const shown = useMemo(() => (filter === "All" ? projectsData : projectsData.filter((p) => p.type === filter)), [filter, projectsData]);
   const featured = shown[0];
   const rest = shown.slice(1);
 
@@ -138,7 +154,7 @@ export default function Projects() {
           sub="Every entry below cleared our tolerance reports and our punch lists. Drag the amber divider on the featured pour to compare drawing set against delivered steel."
           right={
             <div className="font-mono text-[11px] text-muted tracking-[0.18em] uppercase text-right leading-loose">
-              <p>Showing â <span className="text-accent tabular-nums">{String(shown.length).padStart(2, "0")}</span> / {String(PROJECTS.length).padStart(2, "0")}</p>
+              <p>Showing â <span className="text-accent tabular-nums">{String(shown.length).padStart(2, "0")}</span> / {String(projectsData.length).padStart(2, "0")}</p>
               <p>Backlog â <span className="text-ink">$1.9B contracted</span></p>
             </div>
           }

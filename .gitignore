@@ -1,28 +1,40 @@
 ```
-# Build artifacts
-constructedge/assets/build/
-
 # Dependencies
 node_modules/
-.pnpm-store/
-.yarn/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
-# Logs
-*.log
+# Build artifacts
+dist/
+build/
+*.js
+*.ts
+*.tsx
 
 # Environment
 .env
 .env.local
 .env.*
-!.env.example
 
-# IDE
+# Editors
 .vscode/
 .idea/
+
+# Logs and temp files
+*.log
+*.tmp
 *.swp
-*.swo
-*~
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# OS
+.DS_Store
+Thumbs.db
 ```

@@ -1,9 +1,9 @@
 import { useMemo, useState } from "react";
-import { SERVICES, type ServiceIcon } from "../data";
+import { useBO } from "../bo";
 import { scrollToId } from "../hooks";
 import { IconArrowUR, IconCivil, IconDraft, IconFactory, IconPrecon, IconRetro, IconTower, Reveal, SectionHead } from "../ui";
 
-const ICONS: Record<ServiceIcon, (p: { className?: string }) => React.ReactElement> = {
+const ICONS: Record<"draft" | "civil" | "tower" | "factory" | "retro" | "precon", (p: { className?: string }) => React.ReactElement> = {
   draft: IconDraft,
   civil: IconCivil,
   tower: IconTower,
@@ -14,22 +14,32 @@ const ICONS: Record<ServiceIcon, (p: { className?: string }) => React.ReactEleme
 
 const SPANS = ["md:col-span-2", "md:col-span-1", "md:col-span-1", "md:col-span-2", "md:col-span-1", "md:col-span-2"];
 
-function recommend(q1: string, q2: string, q3: string): { code: string; why: string } | null {
+const SERVICE_ICONS: Record<string, "draft" | "civil" | "tower" | "factory" | "retro" | "precon"> = {
+  "SVC-01": "draft",
+  "SVC-02": "civil",
+  "SVC-03": "tower",
+  "SVC-04": "factory",
+  "SVC-05": "retro",
+  "SVC-06": "precon",
+};
+
+function recommend(q1: string, q2: string, q3: string, boServices: Record<string, { name: string; tag: string; desc: string; duration: string }>): { code: string; why: string } | null {
   if (!q1) return null;
-  if (q1 === "existing") return { code: "SVC-05", why: "Existing structures are our retrofit lane â scan, strengthen, refit, all while the building stays occupied." };
-  if (q1 === "planning") return { code: "SVC-06", why: "You're still shaping the number. A 5D BIM estimate and GMP package de-risks it before capital is committed." };
-  if (q2 === "small") return { code: "SVC-05", why: "Under 20K sq-ft, renovation & retrofit crews mobilize fastest and keep overhead off your number." };
-  if (q3 === "speed") return { code: "SVC-03", why: "Pull-plan scheduling and our own superintendent corps are why commercial jobs land at 96.4% on-time." };
-  if (q3 === "complexity") return { code: "SVC-02", why: "Technically heavy work starts in the engineering studio â PE-stamped systems before steel is ordered." };
-  return { code: "SVC-01", why: "Designâbuild under one contract gives you budget certainty: one team owns scope, schedule and price." };
+  if (q1 === "existing") return { code: "SVC-05", why: boServices["SVC-05"]?.desc || "Existing structures are our retrofit lane — scan, strengthen, refit, all while the building stays occupied." };
+  if (q1 === "planning") return { code: "SVC-06", why: boServices["SVC-06"]?.desc || "You're still shaping the number. A 5D BIM estimate and GMP package de-risks it before capital is committed." };
+  if (q2 === "small") return { code: "SVC-05", why: boServices["SVC-05"]?.desc || "Under 20K sq-ft, renovation & retrofit crews mobilize fastest and keep overhead off your number." };
+  if (q3 === "speed") return { code: "SVC-03", why: boServices["SVC-03"]?.desc || "Pull-plan scheduling and our own superintendent corps are why commercial jobs land at 96.4% on-time." };
+  if (q3 === "complexity") return { code: "SVC-02", why: boServices["SVC-02"]?.desc || "Technically heavy work starts in the engineering studio — PE-stamped systems before steel is ordered." };
+  return { code: "SVC-01", why: boServices["SVC-01"]?.desc || "Design–build under one contract gives you budget certainty: one team owns scope, schedule and price." };
 }
 
 export default function Services() {
+  const bo = useBO();
   const [q1, setQ1] = useState("");
   const [q2, setQ2] = useState("");
   const [q3, setQ3] = useState("");
-  const rec = useMemo(() => recommend(q1, q2, q3), [q1, q2, q3]);
-  const recService = rec ? SERVICES.find((s) => s.code === rec.code) : null;
+  const rec = useMemo(() => recommend(q1, q2, q3, bo.services), [q1, q2, q3, bo.services]);
+  const serviceCodes = Object.keys(bo.services);
 
   return (
     <section id="services" className="relative bg-bg scroll-mt-24 noise">
