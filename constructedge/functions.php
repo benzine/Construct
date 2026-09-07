@@ -21,6 +21,7 @@ require_once CONSTRUCTEDGE_DIR . '/inc/enqueue.php';
 require_once CONSTRUCTEDGE_DIR . '/inc/customizer.php';
 require_once CONSTRUCTEDGE_DIR . '/inc/rest-settings.php';
 require_once CONSTRUCTEDGE_DIR . '/inc/demo-import.php';
+require_once CONSTRUCTEDGE_DIR . '/inc/backoffice.php';
 
 /**
  * Register theme features on setup.

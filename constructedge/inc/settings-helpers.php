@@ -144,5 +144,7 @@ function constructedge_get_settings() {
 	$out['search'] = array(
 		'zIndex' => $out['searchZindex'],
 	);
+	// ---------- Backoffice Content (full text control) ----------
+	$out['bo'] = constructedge_get_backoffice_content();
 	return $out;
 }
