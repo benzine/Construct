@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="mo-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a1120"/><stop offset="0.6" stop-color="#122340"/><stop offset="1" stop-color="#2b4a6b"/>
+    </linearGradient>
+    <linearGradient id="mo-glass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3e6b96"/><stop offset="1" stop-color="#1c3a5c"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#mo-sky)"/>
+  <g fill="#9fc0e4" opacity="0.5">
+    <circle cx="120" cy="80" r="1.5"/><circle cx="220" cy="50" r="1"/><circle cx="640" cy="90" r="1.5"/><circle cx="720" cy="60" r="1"/><circle cx="560" cy="40" r="1.2"/>
+  </g>
+  <rect x="330" y="90" width="140" height="380" fill="url(#mo-glass)"/>
+  <g stroke="#9fc0e4" stroke-width="1.4" opacity="0.7">
+    <path d="M330 90h140M330 130h140M330 170h140M330 210h140M330 250h140M330 290h140M330 330h140M330 370h140M330 410h140M330 450h140"/>
+    <path d="M350 90v380M370 90v380M390 90v380M410 90v380M430 90v380M450 90v380"/>
+  </g>
+  <g fill="#ffd27a" opacity="0.85">
+    <rect x="352" y="140" width="16" height="22"/><rect x="412" y="180" width="16" height="22"/><rect x="372" y="260" width="16" height="22"/><rect x="432" y="300" width="16" height="22"/><rect x="392" y="380" width="16" height="22"/><rect x="352" y="420" width="16" height="22"/>
+  </g>
+  <rect x="395" y="40" width="10" height="50" fill="#9fc0e4"/>
+  <circle cx="400" cy="36" r="4" fill="#ff6b00"/>
+  <rect x="120" y="240" width="90" height="230" fill="#16324e"/>
+  <g stroke="#9fc0e4" stroke-width="1" opacity="0.4"><path d="M120 280h90M120 320h90M120 360h90M120 400h90M120 440h90"/></g>
+  <rect x="600" y="200" width="80" height="270" fill="#16324e"/>
+  <g stroke="#9fc0e4" stroke-width="1" opacity="0.4"><path d="M600 240h80M600 280h80M600 320h80M600 360h80M600 400h80M600 440h80"/></g>
+  <rect x="0" y="468" width="800" height="32" fill="#0a1626"/>
+  <g stroke="#2b4a6b" stroke-width="2"><path d="M0 468h800"/></g>
+  <g stroke="#9fc0e4" stroke-width="1.6" opacity="0.5">
+    <path d="M250 468V320M250 320l60-40M310 468V340"/>
+  </g>
+</svg>

@@ -1,0 +1,92 @@
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <script type="module">import { injectIntoGlobalHook } from "/@react-refresh";
+injectIntoGlobalHook(window);
+window.$RefreshReg$ = () => {};
+window.$RefreshSig$ = () => (type) => type;</script>
+
+    <script type="module" src="/@vite/client"></script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ConstructEdge — Design-Build Construction & Civil Engineering</title>
+    <meta
+      name="description"
+      content="ConstructEdge Group: high-rise, industrial and civil structures — engineered in-house, erected by our own crews. 1,240+ delivered since 1987."
+    />
+    <link
+      rel="icon"
+      href="image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23FF6B00' d='M12 1 23 12 12 23 1 12Z'/%3E%3Cpath fill='%230C0F13' d='M6 15a6 6 0 0 1 12 0v1H6z'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("ce-theme");
+          if (t !== "light" && t !== "dark") {
+            t = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+          }
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      })();
+    </script>
+    <style>
+      #ce-boot-frame{position:fixed;inset:0;z-index:2147483000;display:grid;place-items:center;background:#0c0f13;color:#edf2f7;font-family:'JetBrains Mono',ui-monospace,Menlo,monospace;overflow:hidden}
+      #ce-boot-frame .bf-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(126,160,205,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(126,160,205,.09) 1px,transparent 1px);background-size:44px 44px}
+      #ce-boot-frame .bf-box{position:relative;text-align:center;padding:24px;max-width:560px}
+      #ce-boot-frame .bf-kicker{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:#ff6b00}
+      #ce-boot-frame h1{margin:16px 0 0;font-family:'Space Grotesk','Barlow',system-ui,sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3.2rem);line-height:.95;text-transform:uppercase;letter-spacing:-.015em}
+      #ce-boot-frame h1 em{font-style:normal;color:#ff6b00}
+      #ce-boot-frame .bf-status{margin-top:22px;display:inline-flex;align-items:center;gap:10px;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:rgba(159,192,228,.85)}
+      #ce-boot-frame .bf-bar{width:130px;height:3px;background:rgba(126,160,205,.22);overflow:hidden}
+      #ce-boot-frame .bf-bar i{display:block;height:100%;width:40%;background:#ff6b00;animation:bf-load 1.4s cubic-bezier(.4,0,.2,1) infinite}
+      @keyframes bf-load{0%{transform:translateX(-110%)}100%{transform:translateX(340%)}}
+      #ce-boot-frame .bf-dot{width:7px;height:7px;border-radius:50%;background:#ff6b00;box-shadow:0 0 10px rgba(255,107,0,.9);animation:bf-blink 1.4s steps(1) infinite}
+      @keyframes bf-blink{50%{opacity:.15}}
+      #ce-boot-frame .bf-hazard{position:absolute;left:0;right:0;bottom:0;height:7px;background:repeating-linear-gradient(-45deg,#ff6b00 0 14px,#101623 14px 28px)}
+      #ce-boot-fault{margin-top:20px;font-size:12px;line-height:1.6;color:#ffb38a;white-space:pre-wrap;word-break:break-word;display:none}
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- Boot frame: renders with zero JS; React replaces #root on mount. -->
+      <div id="ce-boot-frame" aria-hidden="true">
+        <div class="bf-grid"></div>
+        <div class="bf-box">
+          <p class="bf-kicker">ConstructEdge Group · Field Telemetry</p>
+          <h1>Raising<br />the <em>frame.</em></h1>
+          <p class="bf-status"><span class="bf-dot"></span><span class="bf-bar"><i></i></span><span id="ce-shell-status">Spinning up field server</span></p>
+          <div id="ce-boot-fault"></div>
+        </div>
+        <div class="bf-hazard"></div>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var fault = document.getElementById("ce-boot-fault");
+        var status = document.getElementById("ce-shell-status");
+        function fail(title, detail) {
+          if (status) { status.textContent = title; status.style.color = "#ff6b00"; }
+          if (fault) { fault.style.display = "block"; fault.textContent = (detail ? detail : "") + "\nPreview serving issue, not site code — hard-refresh (Ctrl/Cmd+Shift+R) or reload."; }
+        }
+        window.addEventListener("error", function (e) {
+          if (!window.__CE_BOOTED__) fail("BOOT FAULT", (e.message || "script error") + (e.filename ? " @ " + e.filename + ":" + (e.lineno || "?") : ""));
+        });
+        window.addEventListener("unhandledrejection", function (e) {
+          if (!window.__CE_BOOTED__) fail("BOOT FAULT — unhandled rejection", String((e.reason && e.reason.message) || e.reason || "unknown"));
+        });
+        window.setTimeout(function () {
+          if (!window.__CE_BOOTED__ && document.getElementById("ce-boot-frame")) {
+            fail("BOOT STALL — the JS bundle never executed", "");
+          }
+        }, 9000);
+      })();
+    </script>
+    <script type="module" src="/src/main.tsx?t=1788471836820"></script>
+  </body>
+</html>

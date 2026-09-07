@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="su-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#05070d"/><stop offset="1" stop-color="#101826"/>
+    </linearGradient>
+    <linearGradient id="su-cone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff3d9" stop-opacity=".34"/><stop offset="1" stop-color="#fff3d9" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#su-sky)"/>
+  <g fill="#cfe2f5" opacity=".5"><circle cx="120" cy="60" r="1.4"/><circle cx="300" cy="40" r="1.2"/><circle cx="520" cy="70" r="1.4"/><circle cx="700" cy="44" r="1.2"/></g>
+  <g>
+    <rect x="84" y="120" width="6" height="260" fill="#0d1420"/>
+    <path d="M64 124 20 380h120z" fill="url(#su-cone)"/>
+    <rect x="710" y="120" width="6" height="260" fill="#0d1420"/>
+    <path d="M690 124l-44 256h120z" fill="url(#su-cone)"/>
+  </g>
+  <path d="M80 380 Q400 220 720 380 L720 400 Q400 246 80 400 Z" fill="#101826" stroke="#223349" stroke-width="2"/>
+  <g stroke="#33506e" stroke-width="2" fill="none">
+    <path d="M120 340 Q400 210 680 340"/>
+    <path d="M140 350l30-24 30 22 30-24 30 22 30-24 30 22 30-24 30 22 30-24 30 22 30-24 30 22 30-24 30 22"/>
+  </g>
+  <g fill="#ff8c4a"><circle cx="352" cy="262" r="2.4"/><circle cx="362" cy="252" r="1.8"/><circle cx="344" cy="250" r="1.6"/><circle cx="370" cy="262" r="1.6"/></g>
+  <rect y="400" width="800" height="100" fill="#0a0f18"/>
+  <g stroke="#1c2a3d" stroke-width="2" stroke-dasharray="12 16"><path d="M40 440h720M60 470h680"/></g>
+  <g fill="#ff6b00" opacity=".9"><circle cx="400" cy="238" r="3"/></g>
+</svg>

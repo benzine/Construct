@@ -1,0 +1,20 @@
+
+/*
+Theme Name: ConstructEdge
+Theme URI: https://constructedge.example/
+Author: ConstructEdge Group
+Author URI: https://constructedge.example/
+Description: Headless React theme. The frontend IS the original React app — the same compiled bundle runs unchanged inside WordPress. Every color, font, spacing and animation value is driven by the Customizer (Appearance → Customize) and injected as window.wpReactSettings. Includes a one-click demo importer.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.7
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: constructedge
+Tags: construction, engineering, react, headless, custom-colors, custom-logo, custom-menu
+*/
+
+/* This file intentionally holds ONLY the WordPress theme header.
+   All visual CSS ships in the compiled React bundle (assets/build/).
+   Keeping this file header-only avoids any visual CSS conflict with React. */
