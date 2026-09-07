@@ -1,13 +1,29 @@
 ```
+# WordPress files
+wp-content/
+wp-admin/
+wp-includes/
+*.php.bak
+*.php~
+.htaccess
+wp-config.php
+wp-config-sample.php
+
 # Dependencies
 node_modules/
+vendor/
 
 # Build artifacts
 dist/
 build/
-*.js
-*.ts
-*.tsx
+*.min.css
+*.min.js
+*.map
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
 
 # Environment
 .env
@@ -17,24 +33,10 @@ build/
 # Editors
 .vscode/
 .idea/
+*.sublime-project
+*.sublime-workspace
 
-# Logs and temp files
-*.log
-*.tmp
-*.swp
-
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-
-# Coverage
-coverage/
-htmlcov/
-.coverage
-
-# OS
+# OS generated files
 .DS_Store
 Thumbs.db
 ```
